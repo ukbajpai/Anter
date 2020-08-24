@@ -1,0 +1,8 @@
+# exposed ports
+ports:
+- port: 8080
+
+# start up tasks
+tasks:
+- init: ./mvnw package -DskipTests
+  command: java -jar target/*.jar
