@@ -1,0 +1,35 @@
+package com.encapsulateideas.anter.Anter.controller;
+
+import com.encapsulateideas.anter.Anter.Repo.UserRepo;
+import com.encapsulateideas.anter.Anter.model.User;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/")
+public class UserController {
+
+    private UserRepo userRepo;
+
+    public UserController(UserRepo repo){
+        this.userRepo = repo;
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public Object authenticateLogin(@RequestBody User user){
+        final var getuser = userRepo.findByUuid(user.getUuid());
+        if(getuser.getPassword().equals(user.getPassword())){
+            return "Got IT!!!! ";
+        }
+        return "You Screwed it :(";
+    }
+
+     @RequestMapping(value = "/createlogin", method = RequestMethod.GET)
+    public Object RegisterLogin(@RequestBody User user){
+        return userRepo.save(user);
+    }
+
+}
