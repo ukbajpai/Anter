@@ -7,11 +7,13 @@ import com.encapsulateideas.anter.Anter.Repo.UserRepo;
 import com.encapsulateideas.anter.Anter.model.IpCamera;
 import com.encapsulateideas.anter.Anter.model.User;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/")
 public class UserController {
